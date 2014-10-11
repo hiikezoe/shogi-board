@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="shogi-board">
+  <template>
+    <link rel="stylesheet" href="shogi-board.css">
+    <link rel="stylesheet" href="shogi-piece.css">
+    <div>
+      <h3>{{titleName}} {{place}}</h3>
+      <!-- button on-tap="{{previous}}">&lt;</button -->
+      <!-- button on-tap="{{next}}">&gt;</button -->
+    </div>
+    <div>
+      <div class="player">
+        <div id="captured-white" class="captured"></div>
+        <div id="player">
+          <span>▽{{whitePlayerName}}</span>
+        </div>
+      </div>
+      <div id="board"></div>
+      <div class="player">
+        <div id="player">
+          <span>▲{{blackPlayerName}}</span>
+        </div>
+        <div id="captured-black" class="captured"></div>
+      </div>
+    </div>
+    <div>
+      <select id="kifu" size=99 on-change="{{jumpTo}}"></select>
+      <div id="comment"></div>
+    </div>
+  </template>
+  <script src="shogi-board.js"></script>
+</polymer-element>

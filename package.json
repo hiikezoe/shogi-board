@@ -1,0 +1,29 @@
+{
+  "name": "shogi-board",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Hiroyuki Ikezoe <hiikezoe@gnome.org>",
+  "license": "GPLv3",
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "chai": "^1.9.1",
+    "gulp": "^3.8.8",
+    "gulp-bower": "0.0.6",
+    "jasmine-jquery": "^2.0.5",
+    "karma": "^0.12.24",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-cli": "0.0.4",
+    "karma-detect-browsers": "^0.1.2",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-jasmine": "^0.1.5",
+    "karma-jasmine-jquery": "^0.1.0",
+    "karma-mocha": "^0.1.9",
+    "karma-opera-launcher": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-polymer-test": "^0.2.4",
+    "karma-safari-launcher": "^0.1.1",
+    "mocha": "^1.21.4"
+  }
+}

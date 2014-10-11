@@ -1,0 +1,173 @@
+{
+  "moves": [
+    { "comments": [ "First comment." ] },
+    {
+      "index": 1,
+      "move": {
+        "piece": "歩",
+        "from": {
+          "x": 7,
+          "y": 7
+        },
+        "to": {
+          "x": 7,
+          "y": 6
+        }
+      },
+      "comments": [ "Second comment." ]
+    },
+    {
+     "index": 2,
+     "move": {
+      "piece": "歩",
+      "from": {
+       "x": 8,
+       "y": 3
+      },
+      "to": {
+       "x": 8,
+       "y": 4
+      }
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [ "3rd comment." ]
+    },
+    {
+     "index": 3,
+     "move": {
+      "piece": "金",
+      "from": {
+       "x": 6,
+       "y": 9
+      },
+      "to": {
+       "x": 7,
+       "y": 8
+      }
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [ "4th comment." ]
+    },
+    {
+     "index": 4,
+     "move": {
+      "piece": "金",
+      "from": {
+       "x": 4,
+       "y": 1
+      },
+      "to": {
+       "x": 3,
+       "y": 2
+      }
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [ "5th comment." ]
+    },
+    {
+     "index": 5,
+     "move": {
+      "piece": "歩",
+      "from": {
+       "x": 2,
+       "y": 7
+      },
+      "to": {
+       "x": 2,
+       "y": 6
+      }
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [ "6th comment." ]
+    },
+    {
+     "index": 6,
+     "move": {
+      "piece": "歩",
+      "from": {
+       "x": 8,
+       "y": 4
+      },
+      "to": {
+       "x": 8,
+       "y": 5
+      }
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [ "6th comment." ]
+    },
+    {
+     "index": 7,
+     "move": {
+      "piece": "角",
+      "from": {
+       "x": 8,
+       "y": 8
+      },
+      "to": {
+       "x": 7,
+       "y": 7
+      }
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [
+      "7th comment."
+     ]
+    },
+    {
+     "index": 8,
+     "move": {
+      "piece": "歩",
+      "from": {
+       "x": 3,
+       "y": 3
+      },
+      "to": {
+       "x": 3,
+       "y": 4
+      }
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [
+      "8th comment."
+     ]
+    },
+    {
+     "index": 9,
+     "move": {
+      "piece": "銀",
+      "from": {
+       "x": 7,
+       "y": 9
+      },
+      "to": {
+       "x": 8,
+       "y": 8
+      }
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [
+      "9th comment."
+     ]
+    },
+    {
+     "index": 10,
+     "move": {
+      "piece": "角",
+      "from": {
+       "x": 2,
+       "y": 2
+      },
+      "to": {
+       "x": 7,
+       "y": 7
+      },
+      "aux": "成"
+     },
+     "expended_time": " 0:00/00:00:00",
+     "comments": [
+      "10th comment."
+     ]
+    }
+  ]
+}

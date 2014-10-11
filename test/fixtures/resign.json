@@ -1,0 +1,25 @@
+{
+  "moves": [
+    { "comments": [ "First comment." ] },
+    {
+      "index": 1,
+      "move": {
+        "piece": "歩",
+        "from": {
+          "x": 7,
+          "y": 7
+        },
+        "to": {
+          "x": 7,
+          "y": 6
+        }
+      },
+      "comments": [ "Second comment." ]
+    },
+    {
+      "index": 2,
+      "move": "投了",
+      "expended_time": " 0:00/00:00:00"
+    }
+  ]
+}

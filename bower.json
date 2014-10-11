@@ -1,0 +1,18 @@
+{
+  "name": "shogi-board",
+  "version": "0.0.0",
+  "authors": [
+    "Hiroyuki Ikezoe <hiikezoe@gnome.org>"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.4.1"
+  }
+}
