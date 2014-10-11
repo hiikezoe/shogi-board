@@ -22,17 +22,16 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'elements/*.js',
-      'elements/*.css',
-      'elements/*.html',
       'test/*.js',
       { pattern: 'test/fixtures/**', included: false, watched: true, served: true },
-      { pattern: 'elements/images/**', included: false, watched: true, served: true },
+      { pattern: 'shogi-*.*', included: false, watched: true, served: true },
+      { pattern: 'images/*.svg', included: false, watched: true, served: true },
     ],
 
     // list of files to exclude
     exclude: [
       '**/*.swp',
+      'demo.html'
     ],
 
 

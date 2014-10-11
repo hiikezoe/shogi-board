@@ -1,16 +1,26 @@
 {
   "name": "shogi-board",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "Hiroyuki Ikezoe <hiikezoe@gnome.org>"
+  ],
+  "description": "A polymer element for Shogi board",
+  "keywords": [
+    "Polymer",
+    "web-components",
+    "shogi"
   ],
   "license": "GPLv3",
   "ignore": [
     "**/.*",
-    "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "node_modules",
+    "package.json",
+    "karma.conf.js",
+    "gulpfile.js",
+    "demo.html",
+    "kif-parser",
+    "test"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#~0.4.1"
