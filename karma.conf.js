@@ -24,13 +24,15 @@ module.exports = function(config) {
     files: [
       'test/*.js',
       { pattern: 'test/fixtures/**', included: false, watched: true, served: true },
-      { pattern: 'shogi-*.*', included: false, watched: true, served: true },
-      { pattern: 'images/*.svg', included: false, watched: true, served: true },
+      { pattern: 'elements/shogi-*.*', included: false, watched: true, served: true },
+      { pattern: 'elements/images/*.svg', included: false, watched: true, served: true },
     ],
 
     // list of files to exclude
     exclude: [
       '**/*.swp',
+      'shogi-*.*',
+      'images',
       'demo.html'
     ],
 
@@ -45,6 +47,12 @@ module.exports = function(config) {
 
 
     proxies: {
+      '/base/shogi-board.html': '/base/elements/shogi-board.html',
+      '/base/shogi-board.js': '/base/elements/shogi-board.js',
+      '/base/shogi-board.css': '/base/elements/shogi-board.css',
+      '/base/shogi-piece.css': '/base/elements/shogi-piece.css',
+      '/base/images': '/base/elements/images',
+      '/base/bower_components/bower_components': '/base/bower_components',
       '/test/fixtures': '/base/test/fixtures',
     },
 

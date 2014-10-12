@@ -1,6 +1,6 @@
 {
   "name": "shogi-board",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [
     "Hiroyuki Ikezoe <hiikezoe@gnome.org>"
   ],
@@ -19,6 +19,7 @@
     "karma.conf.js",
     "gulpfile.js",
     "demo.html",
+    "elements",
     "kif-parser",
     "test"
   ],

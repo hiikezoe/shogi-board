@@ -1,0 +1,98 @@
+@charset 'UTF-8';
+
+h3 {
+  margin: 0;
+}
+
+#board {
+  perspective: 1000px;
+  margin: 0;
+  width: 440px;
+  height: 480px;
+  display: inline-block;
+  background-color: #fc6;
+  background-image: url('images/board.svg');
+  background-size: 100% 100%;
+}
+
+.player {
+  display: inline-block;
+  width: 95px;
+  height: 480px;
+  vertical-align: top;
+}
+
+#player {
+  height: 40%;
+}
+
+.captured {
+  margin: 0;
+  height: 60%;
+  background-color: #eb3;
+  border-radius: 0.2em;
+}
+
+#captured-black {
+}
+
+#captured-white {
+  transform: rotateZ(180deg);
+}
+
+.piece {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-size: 100% 100%;
+}
+
+#captured-white > .piece {
+  transform: rotateZ(0deg);
+}
+
+.captured .piece {
+  display: inline-block;
+  width: 30px;
+  height: 34px;
+}
+
+.back {
+  transform: rotateY(-180deg);
+}
+
+.current-turn {
+  background-color: #ffa;
+}
+
+#kifu {
+  width: 95px;
+  height: 200px;
+  display: inline-block;
+  margin: 0 0;
+  padding: 0;
+}
+
+#kifu > select {
+  margin: 0 0;
+  padding: 0;
+}
+
+#kifu option {
+  margin: 0 0;
+  padding: 0;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+#comment {
+  resize: both;
+  display: inline-block;
+  width: 540px;
+  overflow: auto;
+  height: 200px;
+}
+
+#comment p {
+  margin: 0.2em;
+}
