@@ -3,7 +3,7 @@ var karma = require('karma').server;
 var replace = require('gulp-replace');
 
 var paths = {
-  src: 'elements',
+  src: 'elements/**',
   dist: './'
 };
 
@@ -26,7 +26,8 @@ gulp.task('copy', function(done) {
 });
 
 gulp.task('dist', ['copy'], function(cb) {
-  return gulp.src('shogi-board.html')
+  return gulp.src('./shogi-board.html')
     .pipe(replace(/..\/bower_components\//g,
-                  '../../'));
+                  '../'))
+    .pipe(gulp.dest(paths.dist));
 });
