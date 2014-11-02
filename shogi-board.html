@@ -4,7 +4,10 @@
     <link rel="stylesheet" href="shogi-board.css">
     <link rel="stylesheet" href="shogi-piece.css">
     <div>
-      <h3>{{titleName}} {{place}}</h3>
+      <div id="header">
+        <content select=".header"></content>
+        <span>{{titleName}} {{place}}</span>
+      </div>
       <!-- button on-tap="{{previous}}">&lt;</button -->
       <!-- button on-tap="{{next}}">&gt;</button -->
     </div>

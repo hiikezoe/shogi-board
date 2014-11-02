@@ -118,6 +118,7 @@ if (!Array.prototype.find) {
       if (!comments) {
         return;
       }
+      this.$.comment.scrollTop = 0;
 
       for (var i = 0, l = comments.length; i < l; i++) {
         var line = document.createElement('p');
