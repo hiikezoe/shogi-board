@@ -54,6 +54,10 @@ if (!Array.prototype.find) {
       this.whitePlayerName = this.kifu["後手"];
     },
 
+    isFinished: function() {
+      return (this.kifu && this.kifu.result);
+    },
+
     _appendMoveString: function(string) {
       var option = document.createElement('option');
       option.innerHTML = string;
