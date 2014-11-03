@@ -17,7 +17,7 @@
 
 .player {
   display: inline-block;
-  width: 95px;
+  width: 100px;
   height: 480px;
   vertical-align: top;
 }
@@ -66,7 +66,7 @@
 }
 
 #kifu {
-  width: 95px;
+  width: 100px;
   height: 200px;
   display: inline-block;
   margin: 0 0;
