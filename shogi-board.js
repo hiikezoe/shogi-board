@@ -52,6 +52,9 @@ if (!Array.prototype.find) {
       this.place = this.kifu["場所"];
       this.blackPlayerName = this.kifu["先手"];
       this.whitePlayerName = this.kifu["後手"];
+      if (this.turnNumber == 0) {
+        this.$.kifu.selectedIndex = this.turnNumber;
+      }
     },
 
     isFinished: function() {
