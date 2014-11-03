@@ -9,6 +9,7 @@
     "chai": "^1.9.1",
     "gulp": "^3.8.8",
     "gulp-bower": "0.0.6",
+    "gulp-concat": "^2.4.1",
     "gulp-replace": "^0.4.0",
     "jasmine-jquery": "^2.0.5",
     "karma": "^0.12.24",

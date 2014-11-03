@@ -1,9 +1,11 @@
+var concat = require('gulp-concat');
 var gulp = require('gulp');
 var karma = require('karma').server;
 var replace = require('gulp-replace');
 
 var paths = {
   src: 'elements/**',
+  scripts: ['elements/shogi-board.js', 'elements/kif-parser/kif-parser.js'],
   dist: './'
 };
 
@@ -25,9 +27,17 @@ gulp.task('copy', function(done) {
     .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('dist', ['copy'], function(cb) {
+gulp.task('dist', ['scripts'], function(cb) {
   return gulp.src('./shogi-board.html')
     .pipe(replace(/..\/bower_components\//g,
                   '../'))
+    .pipe(replace(/<(script src="kif-parser\/kif-parser\.js.*script)>/g,
+                  '<!--$1-->'))
+    .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('scripts', ['copy'], function() {
+  return gulp.src(paths.scripts)
+    .pipe(concat('shogi-board.js'))
     .pipe(gulp.dest(paths.dist));
 });
