@@ -51,8 +51,12 @@ if (!Array.prototype.find) {
       }
     },
 
-    attributeChanged: function(nane, oldValue, newValue) {
-      this.load(newValue);
+    attributeChanged: function(name, oldValue, newValue) {
+      switch (name) {
+        case 'src':
+          this.load(newValue);
+          break;
+      }
     },
 
     load: function(url) {
