@@ -37,9 +37,11 @@ if (!Array.prototype.find) {
       if (typeof kifu === 'string') {
         kifu = JSON.parse(kifu);
       }
-      if (!this.kifu || this.kifu['対局ID'] != kifu['対局ID']) {
-        this.initialize();
+      var turnNumber = 0;
+      if (this.kifu && this.kifu['対局ID'] == kifu['対局ID']) {
+        turnNumber = this.turnNumber;
       }
+      this.initialize();
       this.kifu = kifu;
       if (this.kifu.moves) {
         this.maxTurnNumber = this.kifu.moves.length;
@@ -52,8 +54,9 @@ if (!Array.prototype.find) {
       this.place = this.kifu["場所"];
       this.blackPlayerName = this.kifu["先手"];
       this.whitePlayerName = this.kifu["後手"];
-      if (this.turnNumber == 0) {
-        this.$.kifu.selectedIndex = this.turnNumber;
+      if (turnNumber != 0) {
+        this.$.kifu.selectedIndex = turnNumber;
+        this.jumpTo(turnNumber);
       }
     },
 

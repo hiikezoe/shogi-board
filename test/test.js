@@ -138,5 +138,24 @@
         });
       });
     });
+    suite('resetKifu', function() {
+      test('should work even if kifu is reset', function(done) {
+        this.set(function(element) {
+        }).then(function(element) {
+          var kifu = readFixtures('jump.json');
+          element.setKifu(kifu);
+
+          assert.isTrue(element.jumpTo(element.maxTurnNumber - 1));
+
+          var kifu = readFixtures('jump.json');
+          element.setKifu(kifu);
+
+          assert.equal(element.maxTurnNumber - 1, element.turnNumber);
+          assert.isTrue(element.previous());
+          assert.isTrue(element.previous());
+          assert.isTrue(element.previous());
+        });
+      });
+    });
   });
 }());
