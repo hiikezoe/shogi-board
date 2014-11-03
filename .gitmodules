@@ -1,3 +1,3 @@
 [submodule "kif-parser"]
-	path = kif-parser
+	path = elements/kif-parser
 	url = https://github.com/hiikezoe/kif-parser.git

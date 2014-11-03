@@ -25,12 +25,49 @@ if (!Array.prototype.find) {
   'use strict';
   Polymer('shogi-board', {
 
+    publish: {
+      src: {
+        value: '',
+        reflect: true
+      },
+
+      cors_api_url: {
+        value: 'http://cors-shogi.herokuapp.com/',
+        reflect: true
+      }
+    },
+
     created: function() {
       this.kifu = null;
       this.turnNumber = 0;
       this.maxTurnNumber = 0;
       this.pieces = [];
       this.captured = [];
+    },
+
+    ready: function() {
+      if (this.src) {
+        this.load(this.src);
+      }
+    },
+
+    attributeChanged: function(nane, oldValue, newValue) {
+      this.load(newValue);
+    },
+
+    load: function(url) {
+      var request = new XMLHttpRequest();
+      request.open('GET', this.cors_api_url + url);
+      if (url.search(/\.kif$/) != -1) {
+        request.overrideMimeType('text/plain; charset=Shift_JIS');
+      }
+      request.onload = function() {
+        this.setKifu(KifParser.parse(request.responseText));
+      }.bind(this);
+      request.onerror = function() {
+        console.log(request.responseText);
+      };
+      request.send();
     },
 
     setKifu: function(kifu) {
