@@ -68,8 +68,10 @@ if (!Array.prototype.find) {
       }
       request.onload = function() {
         this.setKifu(KifParser.parse(request.responseText));
-        if (this.update_interval != 1) {
-          window.setTimeout(this.update_interval);
+        if (this.update_interval != -1) {
+          window.setTimeout(function() {
+            this.load(url);
+          }.bind(this), this.update_interval);
         }
       }.bind(this);
       request.onerror = function() {
