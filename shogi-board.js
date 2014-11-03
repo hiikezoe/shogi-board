@@ -43,6 +43,7 @@ if (!Array.prototype.find) {
       this.maxTurnNumber = 0;
       this.pieces = [];
       this.captured = [];
+      this.update_interval = -1;
     },
 
     ready: function() {
@@ -67,6 +68,9 @@ if (!Array.prototype.find) {
       }
       request.onload = function() {
         this.setKifu(KifParser.parse(request.responseText));
+        if (this.update_interval != 1) {
+          window.setTimeout(this.update_interval);
+        }
       }.bind(this);
       request.onerror = function() {
         console.log(request.responseText);
