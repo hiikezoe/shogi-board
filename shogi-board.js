@@ -160,7 +160,7 @@ if (!Array.prototype.find) {
         }
 
         var player = (i % 2) ? '▲' : '△';
-        this._appendMoveString(header + i + player + this.kifu.moves[i].move_string);
+        this._appendMoveString(header + i + player + this.kifu.moves[i].move_string.replace(/\(.*\)/, ''));
       }
     },
 
