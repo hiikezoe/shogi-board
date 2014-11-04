@@ -160,9 +160,9 @@ if (!Array.prototype.find) {
         }
 
         var player = (i % 2) ? '▲' : '△';
-        var move_string;
+        var move_string = '';
         if (this.kifu.moves[i].move_string) {
-          move_string = this.kifu.moves[i].move_string.replace(/\(.*\)/, ''));
+          move_string = this.kifu.moves[i].move_string.replace(/\(.*\)/, '');
         }
         this._appendMoveString(header + i + player + move_string);
       }
