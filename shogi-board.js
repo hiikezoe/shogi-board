@@ -465,11 +465,14 @@ if (!Array.prototype.find) {
       this.pieces = [];
       this.captured = [];
 
+      var self = this;
       function createPieceElement(piece) {
         var element = document.createElement('span');
         element.className = 'piece';
         element.setAttribute('player', piece.player);
         element.classList.add(piece.name);
+        element.style.width = self.$.board.clientWidth / 10 + "px";
+        element.style.height = self.$.board.clientHeight / 10 + "px";
         return element;
       };
 
@@ -511,8 +514,15 @@ if (!Array.prototype.find) {
       piece.x = x;
       piece.y = y;
       var computedStyle = window.getComputedStyle(piece.element, '');
-      piece.element.style.top = ((piece.y * 50.8) - 38) + 'px';
-      piece.element.style.left = ((9 - piece.x) * 46.3 + 13) + 'px';
+      var y = 0.105833333 * this.$.board.clientHeight;
+      var yPad = 0.079166667 * this.$.board.clientHeight;
+      var x = 0.105227273 * this.$.board.clientWidth;
+      var xPad = 0.029545455 * this.$.board.clientWidth;
+
+      piece.element.style.top = ((piece.y * y) - yPad) + 'px';
+      piece.element.style.left = ((9 - piece.x) * x + xPad) + 'px';
+      //piece.element.style.top = ((piece.y * 50.8) - 38) + 'px';
+      //piece.element.style.left = ((9 - piece.x) * 46.3 + 13) + 'px';
     },
 
     _getPieceAtPosition: function(x, y) {
