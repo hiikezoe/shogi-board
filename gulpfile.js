@@ -4,7 +4,7 @@ var karma = require('karma').server;
 var replace = require('gulp-replace');
 
 var paths = {
-  src: 'elements/**',
+  src: ['elements/*.js', 'elements/*.css', 'elements/*.html', 'elements/images'],
   scripts: ['elements/shogi-board.js', 'elements/kif-parser/kif-parser.js'],
   dist: './'
 };
