@@ -50,6 +50,12 @@ if (!Array.prototype.find) {
       if (this.src) {
         this.load(this.src);
       }
+
+      var width = this.$['player-black'].clientWidth;
+      this.$['player-black'].style.fontSize = width / 6 + 'px';
+      width = this.$['player-white'].clientWidth;
+      this.$['player-white'].style.fontSize = width / 6 + 'px';
+      var height = this.$.board.clientHeight;
     },
 
     attributeChanged: function(name, oldValue, newValue) {
@@ -133,7 +139,6 @@ if (!Array.prototype.find) {
     updateKifu: function() {
       this._removeAllChildren(this.$.kifu);
 
-      this.$.kifu.setAttribute('size', 99);
       this._appendMoveString('*= 開始局面 =');
 
       for (var i = 1; i < this.maxTurnNumber; i++) {
@@ -199,13 +204,26 @@ if (!Array.prototype.find) {
     },
 
     _promote: function(piece) {
-      piece.element.classList.add('promoted');
+      var promote = piece.element.querySelector('.promoted');
+      if (!promote) {
+        return;
+      }
+      piece.element.querySelector('.normal')
+           .setAttributeNS(null, 'visibility', 'hidden');
+      piece.element.querySelector('.promoted')
+           .setAttributeNS(null, 'visibility', 'visible');
     },
 
     _unpromote: function(piece) {
-      var promoted = piece.element.classList.contains('promoted');
-      piece.element.classList.remove('promoted');
-      return promoted;
+      var promote = piece.element.querySelector('.promoted');
+      if (!promote) {
+        return false;
+      }
+      var visibility = promote.getAttributeNS(null, 'visibility');
+      piece.element.querySelector('.normal')
+           .setAttributeNS(null, 'visibility', 'visible');
+      promote.setAttributeNS(null, 'visibility', 'hidden');
+      return visibility == 'visible';
     },
 
     _isDropping: function(move) {
@@ -232,9 +250,6 @@ if (!Array.prototype.find) {
     _placePieceInCaptured: function(piece) {
       piece.x = -1;
       piece.y = -1;
-      piece.element.style.top = '0px';
-      piece.element.style.left = '0px';
-      piece.element.style.position = 'static';
     },
 
     _capturePiece: function(piece) {
@@ -267,16 +282,28 @@ if (!Array.prototype.find) {
       pieceArray.sort(function(a, b) {
         return order[a.classList.item(1)] - order[b.classList.item(1)];
       });
-      this._removeAllChildren(this.$[id]);
       pieceArray.forEach(function(element, index) {
-        this.$[id].appendChild(element);
+        var x;
+        var y;
+        if (this.currentPlayer == 'white') {
+          x = 75 - (index % 3) * 40;
+          y = 670 - Math.floor(index / 3) * 50;
+        } else {
+          x = (index % 3) * 40 - 5;
+          y = Math.floor(index / 3) * 50;
+        }
+        var transform = 'translate(' + x + ', ' + y + ')';
+        if (this.currentPlayer == 'white') {
+          transform += ' rotate(180, 24, 26)';
+        }
+        element.setAttributeNS(null, 'transform', transform);
       }.bind(this));
     },
 
     _undropPiece: function(piece) {
       this.captured.push(piece);
-      this.$.board.removeChild(piece.element);
       var id = 'captured-' + this.currentPlayer;
+
       this.$[id].appendChild(piece.element);
       this._placePieceInCaptured(piece);
       this._sortPiecesInCaptured();
@@ -288,9 +315,8 @@ if (!Array.prototype.find) {
           this.captured.splice(index, 1);
         };
       }.bind(this));
-      this.$['captured-' + this.currentPlayer].removeChild(piece.element);
       this.$.board.appendChild(piece.element);
-      piece.element.style.position = 'absolute';
+      this._sortPiecesInCaptured();
     },
 
     get currentPlayer() {
@@ -445,7 +471,10 @@ if (!Array.prototype.find) {
     },
 
     _clearAllPieces: function() {
-      this._removeAllChildren(this.$.board);
+      var pieces = this.$.board.querySelectorAll('.piece');
+      for (var i = 0, l = pieces.length; i < l; i++) {
+        this.$.board.removeChild(pieces[i]);
+      }
       this._removeAllChildren(this.$['captured-black']);
       this._removeAllChildren(this.$['captured-white']);
     },
@@ -467,12 +496,11 @@ if (!Array.prototype.find) {
 
       var self = this;
       function createPieceElement(piece) {
-        var element = document.createElement('span');
-        element.className = 'piece';
-        element.setAttribute('player', piece.player);
+        var element = self.$.board.querySelector('#' + piece.name).cloneNode(true);
+        element.classList.add('piece');
         element.classList.add(piece.name);
-        element.style.width = self.$.board.clientWidth / 10 + "px";
-        element.style.height = self.$.board.clientHeight / 10 + "px";
+        element.removeAttribute('id');
+        element.setAttributeNS(null, 'visibility', 'visible');
         return element;
       };
 
@@ -513,16 +541,12 @@ if (!Array.prototype.find) {
     _placePiece: function(piece, x, y) {
       piece.x = x;
       piece.y = y;
-      var computedStyle = window.getComputedStyle(piece.element, '');
-      var y = 0.105833333 * this.$.board.clientHeight;
-      var yPad = 0.079166667 * this.$.board.clientHeight;
-      var x = 0.105227273 * this.$.board.clientWidth;
-      var xPad = 0.029545455 * this.$.board.clientWidth;
+      var transform = 'translate(' + (9 - x) * (440 / 9) + ', ' + (y - 1) * (480 / 9) + ')';
 
-      piece.element.style.top = ((piece.y * y) - yPad) + 'px';
-      piece.element.style.left = ((9 - piece.x) * x + xPad) + 'px';
-      //piece.element.style.top = ((piece.y * 50.8) - 38) + 'px';
-      //piece.element.style.left = ((9 - piece.x) * 46.3 + 13) + 'px';
+      if (piece.player == 'white') {
+        transform += ' rotate(180, 24.5, 27)';
+      }
+      piece.element.setAttributeNS(null, 'transform', transform);
     },
 
     _getPieceAtPosition: function(x, y) {

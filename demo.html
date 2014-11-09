@@ -7,15 +7,14 @@
     <script src="bower_components/platform/platform.js"></script>
     <link rel="import" href="elements/shogi-board.html">
     <style>
-      body {
+      html, body {
         margin: 0;
+        height: 100%;
       }
     </style>
   </head>
   <body>
-    <div>
-      <shogi-board></shogi-board>
-    </div>
+    <shogi-board></shogi-board>
     <input type="file" accept=".kif" onchange="handleFile(this.files)">
     <script>
       function handleFile(files) {
