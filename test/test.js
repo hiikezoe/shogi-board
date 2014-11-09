@@ -5,7 +5,13 @@
     function equalPiece(expected, actual) {
       assert.equal(expected.name, actual.name);
       assert.equal(expected.player, actual.player);
-      assert.equal(expected.promoted, actual.element.classList.contains('promoted'));
+
+      var visibility;
+      var promote = actual.element.querySelector('.promoted');
+      if (promote) {
+        visibility = promote.getAttributeNS(null, 'visibility');
+      }
+      assert.equal(expected.promoted, visibility == 'visible');
     }
 
     suite('positions', function() {
