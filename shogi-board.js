@@ -283,8 +283,15 @@ if (!Array.prototype.find) {
         return order[a.classList.item(1)] - order[b.classList.item(1)];
       });
       pieceArray.forEach(function(element, index) {
-        var x = (index % 3) * 40;
-        var y = Math.floor(index / 3) * 50;
+        var x;
+        var y;
+        if (this.currentPlayer == 'white') {
+          x = 75 - (index % 3) * 40;
+          y = 670 - Math.floor(index / 3) * 50;
+        } else {
+          x = (index % 3) * 40 - 5;
+          y = Math.floor(index / 3) * 50;
+        }
         var transform = 'translate(' + x + ', ' + y + ')';
         if (this.currentPlayer == 'white') {
           transform += ' rotate(180, 24, 26)';
