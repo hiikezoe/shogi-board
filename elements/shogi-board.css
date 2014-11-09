@@ -59,11 +59,25 @@ shogi-board {
 }
 
 .piece {
-  fill: none;
+  fill: #030303;
 }
 
 .current-turn {
-  fill: #ff0;
+  animation-duration: 1s;
+  animation-name: highlight;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease;
+}
+
+@keyframes highlight {
+  from {
+    fill: #800202;
+  }
+
+  to {
+    fill: #ee8080;
+  }
 }
 
 #top {
