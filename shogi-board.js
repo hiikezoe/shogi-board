@@ -55,7 +55,6 @@ if (!Array.prototype.find) {
       this.$['player-black'].style.fontSize = width / 6 + 'px';
       width = this.$['player-white'].clientWidth;
       this.$['player-white'].style.fontSize = width / 6 + 'px';
-      var height = this.$.board.clientHeight;
     },
 
     attributeChanged: function(name, oldValue, newValue) {
@@ -118,9 +117,9 @@ if (!Array.prototype.find) {
     },
 
     _appendMoveString: function(string) {
-      var option = document.createElement('option');
-      option.innerHTML = string;
-      this.$.kifu.appendChild(option);
+      var div = document.createElement('div');
+      div.innerHTML = string;
+      this.$.kifu.appendChild(div);
     },
 
     _isResultMoveIndex: function(index) {

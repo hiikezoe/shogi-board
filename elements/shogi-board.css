@@ -94,24 +94,25 @@ shogi-board {
   height: inherit;
   margin: 0 0;
   padding: 0;
-}
-
-#kifu > select {
-  margin: 0 0;
-  padding: 0;
-}
-
-#kifu option {
-  margin: 0 0;
-  padding: 0;
+  overflow: auto;
   font-size: 12px;
   font-family: monospace;
+}
+
+#kifu div {
+  margin: 0 0;
+  padding: 0;
+  font-family: monospace;
+}
+
+.core-selected {
+  background: #eee;
 }
 
 #comment {
   resize: both;
   display: inline-block;
-  width: calc(100% - 105px);
+  width: calc(100% - 108px);
   height: inherit;
   overflow: auto;
 }
