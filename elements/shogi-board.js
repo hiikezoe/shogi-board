@@ -67,7 +67,11 @@ if (!Array.prototype.find) {
         request.overrideMimeType('text/plain; charset=Shift_JIS');
       }
       request.onload = function() {
-        this.setKifu(KifParser.parse(request.responseText));
+        var newKifu = KifParser.parse(request.responseText);
+        if (this.kifu != newKifu) {
+          this.setKifu(newKifu);
+        }
+
         if (this.update_interval != -1) {
           window.setTimeout(function() {
             this.load(url);
