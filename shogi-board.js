@@ -50,11 +50,6 @@ if (!Array.prototype.find) {
       if (this.src) {
         this.load(this.src);
       }
-
-      var width = this.$['player-black'].clientWidth;
-      this.$['player-black'].style.fontSize = width / 6 + 'px';
-      width = this.$['player-white'].clientWidth;
-      this.$['player-white'].style.fontSize = width / 6 + 'px';
     },
 
     attributeChanged: function(name, oldValue, newValue) {
@@ -282,14 +277,21 @@ if (!Array.prototype.find) {
         return order[a.classList.item(1)] - order[b.classList.item(1)];
       });
       pieceArray.forEach(function(element, index) {
+        var box = this.$['captured-' + this.currentPlayer];
+        var boxStyle = window.getComputedStyle(box, '');
+        var boxWidth = boxStyle.width.replace(/px/, '');
+        var boxHeight = boxStyle.height.replace(/px/, '');
+        var view = box.getAttribute('viewBox').match(/(\d+)\s?,?\s?(\d+)\s?,?\s?(\d+)\s?,?\s?(\d+)/);
+
+        var column = Math.floor(boxWidth / (40 * (boxHeight / view[4])));
         var x;
         var y;
         if (this.currentPlayer == 'white') {
-          x = 75 - (index % 3) * 40;
-          y = 670 - Math.floor(index / 3) * 50;
+          x = boxWidth - (index % column) * 40 + 5;
+          y = boxHeight - (Math.floor(index / column) - 2) * 50;
         } else {
-          x = (index % 3) * 40 - 5;
-          y = Math.floor(index / 3) * 50;
+          x = (index % column) * 40;
+          y = Math.floor(index / column) * 50;
         }
         var transform = 'translate(' + x + ', ' + y + ')';
         if (this.currentPlayer == 'white') {
