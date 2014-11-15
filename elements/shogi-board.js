@@ -105,9 +105,10 @@ if (!Array.prototype.find) {
       this.place = this.kifu["場所"];
       this.blackPlayerName = this.kifu["先手"];
       this.whitePlayerName = this.kifu["後手"];
-      if (turnNumber != 0) {
-        this.$.kifu.selectedIndex = turnNumber;
-        this.jumpTo(turnNumber);
+      this.$.kifu.selectedIndex = turnNumber;
+      this.jumpTo(turnNumber);
+      if (turnNumber == 0) {
+        this.$.kifu.scrollTop = 0;
       }
     },
 
