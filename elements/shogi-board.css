@@ -221,6 +221,7 @@
   padding: 0;
   overflow: auto;
   font-family: monospace;
+  cursor: default;
 }
 
 #kifu div {
