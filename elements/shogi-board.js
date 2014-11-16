@@ -61,6 +61,10 @@ if (!Array.prototype.find) {
     },
 
     load: function(url) {
+      if (this.updateTimerID) {
+        window.clearTimeout(this.updateTimerID);
+        delete this.updateTimerID;
+      }
       var request = new XMLHttpRequest();
       request.open('GET', this.cors_api_url + url);
       if (url.search(/\.kif$/) != -1) {
@@ -73,7 +77,7 @@ if (!Array.prototype.find) {
         }
 
         if (this.update_interval != -1) {
-          window.setTimeout(function() {
+          this.updateTimerID = window.setTimeout(function() {
             this.load(url);
           }.bind(this), this.update_interval);
         }
