@@ -196,6 +196,7 @@ if (!Array.prototype.find) {
             comments[i + 1].match(/^http(s)?:/)) {
             var a = document.createElement('a');
             a.setAttribute('href', comments[i + 1]);
+            a.setAttribute('target', '_blank');
             a.innerHTML = comments[i];
             i++;
             line.appendChild(a);
